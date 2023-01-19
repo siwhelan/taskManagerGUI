@@ -272,10 +272,16 @@ class Edit_task(customtkinter.CTk):
         task_title = self.entry_4.get()
         task_description = self.entry_5.get()
         due_date = self.entry_6.get()
-        due_date = datetime.strptime(due_date, "%d %b %Y")
         completed = self.checkbox_2.get()
 
-        # print(type(due_date))
+        if due_date != '':
+            from dateutil import parser
+            # Retrieve the due_date from the MongoDB collection
+            due_date = collection.find_one({"task_id": task_id})["due_date"]
+            # convert the ISODate to datetime object using dateutil
+            due_date = parser.parse(due_date)
+            # convert the datetime object to the desired format
+            due_date = due_date.strftime('%d %b %Y')
 
         if collection.find_one({"task_id": task_id}):
 
@@ -522,9 +528,9 @@ class App(customtkinter.CTk):
                     "end",
                     "Task Description: " + task["task_description"] + "\n",
                 )
-                self.textbox.insert(
-                    "end", "Due Date: " + task["due_date"] + "\n"
-                )
+                due_date = task["due_date"].strftime("%d %b %Y")
+                self.textbox.insert("end", "Due Date: " + due_date + "\n")
+
                 self.textbox.insert(
                     "end", "Date Assigned: " + task["date_assigned"] + "\n"
                 )
@@ -618,14 +624,42 @@ class App(customtkinter.CTk):
                 "end",
                 "Task Description: " + task["task_description"] + "\n",
             )
-            self.textbox.insert("end", "Due Date: " +
-                                str(task["due_date"]) + "\n")
+            due_date = task["due_date"].strftime("%d %b %Y")
+            self.textbox.insert("end", "Due Date: " + due_date + "\n")
+
             self.textbox.insert(
                 "end", "Date Assigned: " + task["date_assigned"] + "\n"
             )
             self.textbox.insert(
                 "end", "Completed: " + task["completed"] + "\n"
             )
+
+    def delete_task(self):
+
+        dialog = customtkinter.CTkInputDialog(
+            text="Please enter the Task ID you'd like to delete",
+            title="Delete Task",
+        )
+        task_id = int(dialog.get_input())
+
+        if task_id:
+            # Connect to the MongoDB server
+            client = pymongo.MongoClient("mongodb://localhost:27017/")
+            db_name = "task_manager"
+            db = client[db_name]
+            collection = db["tasks"]
+
+            # Find the task with the matching task_id
+            task = collection.find_one({"task_id": task_id})
+
+            if task:
+                # Delete the task
+                collection.delete_one({"task_id": task_id})
+                self.textbox.insert("0.0", "Task Deleted\n\n")
+            else:
+                self.textbox.insert("0.0", "Task ID does not exist\n\n")
+        else:
+            self.textbox.insert("0.0", "Task ID does not exist\n\n")
 
     def task_menu(self, value):
         self.command(value)
@@ -646,31 +680,7 @@ class App(customtkinter.CTk):
 
         if menu_choice == "View All":
 
-            for task in all_tasks:
-
-                self.textbox.insert(
-                    "end", "\nTask ID: " + str(task["task_id"]) + "\n"
-                )
-
-                self.textbox.insert(
-                    "end", "\nTask Title: " + task["task_title"] + "\n"
-                )
-                self.textbox.insert(
-                    "end", "Assigned To: " + task["assigned_to"] + "\n"
-                )
-                self.textbox.insert(
-                    "end",
-                    "Task Description: " + task["task_description"] + "\n",
-                )
-                self.textbox.insert(
-                    "end", "Due Date: " + str(task["due_date"]) + "\n"
-                )
-                self.textbox.insert(
-                    "end", "Date Assigned: " + task["date_assigned"] + "\n"
-                )
-                self.textbox.insert(
-                    "end", "Completed: " + task["completed"] + "\n"
-                )
+            self.view_all()
 
         elif menu_choice == "Add Task":
 
@@ -683,30 +693,7 @@ class App(customtkinter.CTk):
 
         elif menu_choice == "Delete Task":
 
-            dialog = customtkinter.CTkInputDialog(
-                text="Please enter the Task ID you'd like to delete",
-                title="Delete Task",
-            )
-            task_id = int(dialog.get_input())
-
-            if task_id:
-                # Connect to the MongoDB server
-                client = pymongo.MongoClient("mongodb://localhost:27017/")
-                db_name = "task_manager"
-                db = client[db_name]
-                collection = db["tasks"]
-
-                # Find the task with the matching task_id
-                task = collection.find_one({"task_id": task_id})
-
-                if task:
-                    # Delete the task
-                    collection.delete_one({"task_id": task_id})
-                    self.textbox.insert("0.0", "Task Deleted\n\n")
-                else:
-                    self.textbox.insert("0.0", "Task ID does not exist\n\n")
-            else:
-                self.textbox.insert("0.0", "Task ID does not exist\n\n")
+            self.delete_task()
 
 
 if __name__ == "__main__":
