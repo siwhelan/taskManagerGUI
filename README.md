@@ -38,9 +38,13 @@ The app also employs pymongo to connect to a MongoDB database that stores inform
 
 In order to run this program, the following dependencies and libraries need to be installed:
 
--> customtkinter: This library is used for creating the GUI elements of the program. It can be installed using the command `pip install customtkinter`.
+-> customtkinter: This library is used for creating the GUI elements of the program. It can be installed using the command:
 
--> pymongo: This library is used for connecting to and interacting with a MongoDB database. It can be installed using the command `pip install pymongo`.
+    pip install customtkinter
+
+-> pymongo: This library is used for connecting to and interacting with a MongoDB database. It can be installed using the command 
+    
+    pip install pymongo
 
 -> hashlib: This library is used for hashing passwords for added security. It is included in the python standard library and does not need to be installed separately.
 
