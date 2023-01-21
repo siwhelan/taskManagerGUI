@@ -12,15 +12,25 @@ The app also employs pymongo to connect to a MongoDB database that stores inform
 ## Features    
 
 -> Graphical user interface built using the customtkinter library
+
 -> Dark mode, UI scaling, and the ability to view, add, edit, and delete tasks
+
 -> Login system that utilizes a MongoDB database to store and check user credentials
+
 -> Error handling frames for displaying error messages to the user
+
 -> Utilizes pymongo to connect to a MongoDB database that stores information on tasks and user login information
+
 -> Passwords are hashed using SHA-256 for added security
+
 -> An admin account with the username "admin" and password "adm1n" is automatically added to the MongoDB instance upon installation
+
 -> Ability to generate reports on tasks
+
 -> Option menu to switch between different task views and functions
+
 -> Customizable appearance and color theme
+
 -> Login page with placeholder text and an option to clear the input fields.
 
 
@@ -29,7 +39,9 @@ The app also employs pymongo to connect to a MongoDB database that stores inform
 In order to run this program, the following dependencies and libraries need to be installed:
 
 -> customtkinter: This library is used for creating the GUI elements of the program. It can be installed using the command `pip install customtkinter`.
+
 -> pymongo: This library is used for connecting to and interacting with a MongoDB database. It can be installed using the command `pip install pymongo`.
+
 -> hashlib: This library is used for hashing passwords for added security. It is included in the python standard library and does not need to be installed separately.
 
 Additionally, a MongoDB server should be set up and running on the localhost on port 27017. A database called "task_manager" should be created and a collection called "login_info" should be created within it to store user login information.
