@@ -55,11 +55,11 @@ You can install MongoDB using the installer [here](https://www.mongodb.com/try/d
 A database called "task_manager" should be created and a collection called "login_info" should be created within it to store user login information. You can achieve this with the following steps:
 
 
-    Start the MongoDB server by running the `mongod` command in your terminal.
+-> Start the MongoDB server by running the `mongod` command in your terminal.
 
-    Connect to the MongoDB shell by running the `mongosh` command in your terminal.
+-> Connect to the MongoDB shell by running the `mongosh` command in your terminal.
 
-    Create the "task_manager" database by running the following command: `use task_manager`
+-> Create the "task_manager" database by running the following command: `use task_manager`
 
 The collection 'login_info' will be created insdide this database upon running the file.
 
