@@ -95,7 +95,11 @@ A short series of blogs documenting the build process and explaining some of the
 
 ## Screenshots 
 
-https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ycz16hqjvhakem9l25xg.JPG
+![App Screenshot1](https://i.imgur.com/AGVNnG3.jpg)
+![App Screenshot2](https://i.imgur.com/NsVgO6U.jpg)
+![App Screenshot3](https://i.imgur.com/yUWF4hF.jpg)
+![App Screenshot4](https://i.imgur.com/XI85WdS.jpg)
+![App Screenshot5](https://i.imgur.com/4NfJ9h7.jpg)
 
 ## Acknowledgements
 
