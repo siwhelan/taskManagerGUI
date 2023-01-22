@@ -3,7 +3,9 @@
 
 
 
-Task Manager GUI - A graphical user interface for a task management program built using the customtkinter library. This project was initially a capstone project for a software engineering bootcamp, and was later transformed into a personal project to enhance the usability of the program. The GUI includes features such as a dark mode, UI scaling, and the ability to view, add, edit, and delete tasks. Additionally, the program includes a login system that utilizes a MongoDB database to store and verify user credentials.
+Task Manager - A graphical user interface for a task management program built using the customtkinter library. 
+
+This project was initially a capstone project for a software engineering bootcamp, and was later transformed into a personal project to enhance the usability of the program. The GUI includes features such as a dark mode, UI scaling, and the ability to view, add, edit, and delete tasks. Additionally, the program includes a login system that utilizes a MongoDB database to store and verify user credentials.
 
 The app is composed of three python files: Main_Window.py, Add_task.py, and Login_page.py. Main_Window.py includes the main window of the app, which features a sidebar with buttons for different functions such as viewing all tasks, adding new tasks, editing tasks, and generating reports. Add_task.py features a window for adding new tasks to the app and Login_page.py provides the login page for the app, which utilizes a MongoDB database to check the validity of the entered username and password.
 
