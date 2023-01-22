@@ -25,7 +25,7 @@ Overall, this app provides a user-friendly interface for managing tasks and is a
 
 -> Utilizes pymongo to connect to a MongoDB database that stores information on tasks and user login information 🗄️
 
--> Passwords are hashed using SHA-256 for added security 🔑
+-> Passwords are hashed using [SHA-256](https://www.n-able.com/blog/sha-256-encryption) for added security 🔑
 
 -> An admin account with the username "admin" and password "adm1n" is automatically added to the MongoDB instance upon installation
 
