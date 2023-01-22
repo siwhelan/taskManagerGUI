@@ -89,6 +89,10 @@ Additionally, you can also create a user account on your local MongoDB instance 
 
 Once you have logged in, you can use the sidebar buttons to view, add, edit, and delete tasks, as well as generate reports. The app also includes a dark mode and UI scaling options that can be accessed from the sidebar.
 
+## More Info
+
+A short series of blogs documenting the build process and explaining some of the features in more detail can be found [here](https://dev.to/siwhelan/task-manager-47jh). 
+
 ## Acknowledgements
 
  - [@TomSchimansky](https://github.com/TomSchimansky) for the awesome work on [customTkinter](https://github.com/TomSchimansky/CustomTkinter), a python UI-library based on [Tkinter](https://docs.python.org/3/library/tkinter.html), which provides new, modern and fully customizable widgets.
