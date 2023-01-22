@@ -63,7 +63,7 @@ A database called "task_manager" should be created and a collection called "logi
 
 -> Create the "task_manager" database by running the following command: `use task_manager`
 
-The collection 'login_info' will be created insdide this database upon running the file.
+The collection 'login_info' will be created inside this database upon running the file.
 
 ## Run Locally
 
