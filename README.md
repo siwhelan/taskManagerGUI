@@ -74,7 +74,7 @@ The app comes with a default admin account that you can use to log in and manage
 Additionally, you can also create a user account on your local MongoDB instance by running the following code:
 
 
-![](https://imgur.com/a/5nBlhdH)
+![Imgur](https://imgur.com/48CRsTM))
 
 
 Once you have logged in, you can use the sidebar buttons to view, add, edit, and delete tasks, as well as generate reports. The app also includes a dark mode and UI scaling options that can be accessed from the sidebar.
