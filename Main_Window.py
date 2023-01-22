@@ -282,14 +282,13 @@ class Edit_task(customtkinter.CTk):
         completed = self.checkbox_2.get()
 
         if due_date != "":
-            if due_date != "":
-                try:
-                    due_date = datetime.strptime(due_date, "%d %b %Y")
-                except ValueError:
-                    self.error_frame = ErrorFrame(
-                        self, message="Invalid date format. Please enter in the format of '21 Feb 2022'"
-                    )
-                    return
+            try:
+                due_date = datetime.strptime(due_date, "%d %b %Y")
+            except ValueError:
+                self.error_frame = ErrorFrame(
+                    self, message="Invalid date format. Please enter in the format of '21 Feb 2022'"
+                )
+                return
 
         if collection.find_one({"task_id": task_id}):
 
@@ -590,6 +589,11 @@ class App(customtkinter.CTk):
             {"due_date": {"$lt": datetime.now()}, "completed": "No"}
         )
 
+        # Check to see if there are any tasks in the db to prevent ZeroDivisionError
+        if num_tasks == 0:
+            self.textbox.insert(END, "No tasks in the database")
+            return
+
         # Calculate the percentage of tasks that are incomplete and overdue
         incomplete = round((not_completed_count / num_tasks) * 100, 2)
         overdue = round((overdue_count / num_tasks) * 100, 2)
@@ -616,6 +620,17 @@ class App(customtkinter.CTk):
 
         # Retrieve the 'tasks' collection
         tasks = task_manager["tasks"]
+
+        # count the number of documents in the 'tasks' collection
+        task_count = tasks.count_documents({})
+
+        # check if the count is equal to zero
+        if task_count == 0:
+            # clear any previous content in the textbox widget
+            self.textbox.delete(1.0, END)
+            # insert message into the textbox widget
+            self.textbox.insert("end", "No tasks in the database.")
+            return
 
         # Find all tasks in the collection
         all_tasks = tasks.find()
