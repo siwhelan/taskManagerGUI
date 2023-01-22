@@ -74,7 +74,15 @@ The app comes with a default admin account that you can use to log in and manage
 Additionally, you can also create a user account on your local MongoDB instance by running the following code:
 
 
-![Imgur](https://i.imgur.com/48CRsTM.png)
+    # Connect to the MongoDB server and the "login_info" collection
+
+    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    db = client["task_manager"]
+    collection = db["login_info"]
+
+    # Insert the admin account with hashed password
+
+    collection.insert_one({"username": "admin", "password": hashlib.sha256("adm1n".encode("utf-8")).hexdigest()})
 
 
 Once you have logged in, you can use the sidebar buttons to view, add, edit, and delete tasks, as well as generate reports. The app also includes a dark mode and UI scaling options that can be accessed from the sidebar.
