@@ -13,25 +13,25 @@ Overall, this app provides a user-friendly interface for managing tasks and is a
 
 ## Features    
 
--> Graphical user interface built using the customtkinter library
+-> Graphical user interface built using the customtkinter library 🖥️
 
--> Dark mode, UI scaling, and the ability to view, add, edit, and delete tasks
+-> Dark mode, UI scaling, and the ability to view, add, edit, and delete tasks 📝
 
--> Login system that utilizes a MongoDB database to store and check user credentials
+-> Login system that utilizes a MongoDB database to store and check user credentials 🔒
 
--> Error handling frames for displaying error messages to the user
+-> Error handling frames for displaying error messages to the user 💬
 
--> Utilizes pymongo to connect to a MongoDB database that stores information on tasks and user login information
+-> Utilizes pymongo to connect to a MongoDB database that stores information on tasks and user login information 🗄️
 
--> Passwords are hashed using [SHA-256](https://www.n-able.com/blog/sha-256-encryption) for added security
+-> Passwords are hashed using SHA-256 for added security 🔑
 
 -> An admin account with the username "admin" and password "adm1n" is automatically added to the MongoDB instance upon installation
 
--> Ability to generate reports on tasks
+-> Ability to generate reports on tasks 📈
 
--> Option menu to switch between different task views and functions
+-> Option menu to switch between different task views and functions 📊
 
--> Customizable appearance and color theme
+-> Customizable appearance and color theme 🎨
 
 -> Login page with placeholder text and an option to clear the input fields.
 
