@@ -93,6 +93,10 @@ Once you have logged in, you can use the sidebar buttons to view, add, edit, and
 
 A short series of blogs documenting the build process and explaining some of the features in more detail can be found [here](https://dev.to/siwhelan/task-manager-47jh). 
 
+## Screenshots 
+
+[main window of task manager app](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ycz16hqjvhakem9l25xg.JPG)
+
 ## Acknowledgements
 
  - [@TomSchimansky](https://github.com/TomSchimansky) for the awesome work on [customTkinter](https://github.com/TomSchimansky/CustomTkinter), a python UI-library based on [Tkinter](https://docs.python.org/3/library/tkinter.html), which provides new, modern and fully customizable widgets.
