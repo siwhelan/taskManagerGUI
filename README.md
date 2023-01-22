@@ -7,7 +7,9 @@ Task Manager GUI - A graphical user interface for a task management program buil
 
 The app is composed of three python files: Main_Window.py, Add_task.py, and Login_page.py. Main_Window.py includes the main window of the app, which features a sidebar with buttons for different functions such as viewing all tasks, adding new tasks, editing tasks, and generating reports. Add_task.py features a window for adding new tasks to the app and Login_page.py provides the login page for the app, which utilizes a MongoDB database to check the validity of the entered username and password.
 
-The app also employs pymongo to connect to a MongoDB database that stores information on tasks and user login information. Passwords are hashed using SHA-256 for added security. Overall, this app provides a user-friendly interface for managing tasks and is an example of a complete software project that includes a GUI, database, and security features.
+The app also employs pymongo to connect to the MongoDB database storing information on tasks and user login information. Passwords are hashed using SHA-256 for added security. 
+
+Overall, this app provides a user-friendly interface for managing tasks and is an example of a complete software project that includes a GUI, database, and security features.
 
 ## Features    
 
