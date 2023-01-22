@@ -50,7 +50,7 @@ In order to run this program, the following dependencies and libraries need to b
 
 -> [hashlib](https://pypi.org/project/hashlib/): This library is used for hashing passwords for added security. It is included in the python standard library and does not need to be installed separately.
 
-Additionally, a [MongoDB](https://www.mongodb.com/) server should be set up and running on the localhost on port 27017 before running the file. MongoDB is a popular NoSQL, document-oriented, open-source database management system that is known for its scalability, high performance and ease of use. Port 27017 is the default configuration for MongoDB, but it can be configured to listen on a different port or IP address if needed.
+Additionally, a [MongoDB](https://www.mongodb.com/) server should be set up and running on the localhost on port 27017 before running the file. MongoDB is a popular NoSQL, document-oriented, open-source database management system that is known for its scalability, high performance and ease of use. Port 27017 is the default localhost configuration for MongoDB, but it can be configured to listen on a different port or IP address if needed.
 
 You can install MongoDB using the installer [here](https://www.mongodb.com/try/download/community)
 
