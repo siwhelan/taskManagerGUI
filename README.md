@@ -84,7 +84,7 @@ Once you have logged in, you can use the sidebar buttons to view, add, edit, and
 
 # Acknowledgements
 
- - [@TomSchimansky](https://github.com/TomSchimansky) for the awesome work on [customTkinter](https://github.com/TomSchimansky/CustomTkinter)
+ - [@TomSchimansky](https://github.com/TomSchimansky) for the awesome work on [customTkinter](https://github.com/TomSchimansky/CustomTkinter), a python UI-library based on [Tkinter](https://docs.python.org/3/library/tkinter.html), which provides new, modern and fully customizable widgets.
  
  
 
