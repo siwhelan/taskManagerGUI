@@ -21,7 +21,7 @@ The app also employs pymongo to connect to a MongoDB database that stores inform
 
 -> Utilizes pymongo to connect to a MongoDB database that stores information on tasks and user login information
 
--> Passwords are hashed using SHA-256 for added security
+-> Passwords are hashed using [SHA-256](https://www.n-able.com/blog/sha-256-encryption) for added security
 
 -> An admin account with the username "admin" and password "adm1n" is automatically added to the MongoDB instance upon installation
 
@@ -38,18 +38,30 @@ The app also employs pymongo to connect to a MongoDB database that stores inform
 
 In order to run this program, the following dependencies and libraries need to be installed:
 
--> customtkinter: This library is used for creating the GUI elements of the program. It can be installed using the command:
+-> [customtkinter](https://github.com/TomSchimansky/CustomTkinter): This library is used for creating the GUI elements of the program. It can be installed using the command:
 
     pip install customtkinter
 
--> pymongo: This library is used for connecting to and interacting with a MongoDB database. It can be installed using the command 
+-> [pymongo](https://pymongo.readthedocs.io/en/stable/): This library is used for connecting to and interacting with a MongoDB database. It can be installed using the command 
     
     pip install pymongo
 
--> hashlib: This library is used for hashing passwords for added security. It is included in the python standard library and does not need to be installed separately.
+-> [hashlib](https://pypi.org/project/hashlib/): This library is used for hashing passwords for added security. It is included in the python standard library and does not need to be installed separately.
 
-Additionally, a MongoDB server should be set up and running on the localhost on port 27017. A database called "task_manager" should be created and a collection called "login_info" should be created within it to store user login information.
+Additionally, a [MongoDB](https://www.mongodb.com/) server should be set up and running on the localhost on port 27017 before running the file. MongoDB is a popular NoSQL, document-oriented, open-source database management system that is known for its scalability, high performance and ease of use. 
 
+You can install MongoDB using the installer [here](https://www.mongodb.com/try/download/community)
+
+A database called "task_manager" should be created and a collection called "login_info" should be created within it to store user login information. You can achieve this with the following steps:
+
+
+    Start the MongoDB server by running the `mongod` command in your terminal.
+
+    Connect to the MongoDB shell by running the `mongosh` command in your terminal.
+
+    Create the "task_manager" database by running the following command: `use task_manager`
+
+The collection 'login_info' will be created insdide this database upon running the file.
 
 ## Run Locally
 
@@ -57,7 +69,7 @@ Once all of the dependencies and libraries are installed and the MongoDB server 
     
 The app comes with a default admin account that you can use to log in and manage tasks. The username is "admin" and the password is "adm1n".
 
-Additionally, you can also create an admin account on your local MongoDB instance by running the following code in the Add_task.py file, after the if __name__ == "__main__": line:
+Additionally, you can also create a user account on your local MongoDB instance by running the following code:
 
     # Connect to the MongoDB server and the "login_info" collection
     client = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -67,6 +79,12 @@ Additionally, you can also create an admin account on your local MongoDB instanc
     # Insert the admin account with hashed password
     collection.insert_one({"username": "admin", "password": hashlib.sha256("adm1n".encode("utf-8")).hexdigest()})
 
-This will create an admin account with the username "admin" and the password "adm1n". Make sure MongoDB is running on your local machine before running this code.
 
 Once you have logged in, you can use the sidebar buttons to view, add, edit, and delete tasks, as well as generate reports. The app also includes a dark mode and UI scaling options that can be accessed from the sidebar.
+
+# Acknowledgements
+
+ - [@TomSchimansky](https://github.com/TomSchimansky) for the awesome work on [customTkinter](https://github.com/TomSchimansky/CustomTkinter)
+ 
+ 
+
