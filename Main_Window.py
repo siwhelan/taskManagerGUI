@@ -139,7 +139,14 @@ class Add_task(customtkinter.CTk):
         task_title = self.entry_4.get()
         task_description = self.entry_5.get()
         due_date = self.entry_6.get()
-        due_date = datetime.strptime(due_date, "%d %b %Y")
+        try:
+            due_date = datetime.strptime(due_date, "%d %b %Y")
+        except ValueError:
+            self.error_frame = ErrorFrame(
+                self, message="Invalid date format. Please enter in the format of '21 Feb 2022'"
+            )
+            return
+
         date_assigned = datetime.now().strftime("%d %b %Y")
         completed = "No"
 
@@ -275,7 +282,14 @@ class Edit_task(customtkinter.CTk):
         completed = self.checkbox_2.get()
 
         if due_date != "":
-            due_date = datetime.strptime(due_date, "%d %b %Y")
+            if due_date != "":
+                try:
+                    due_date = datetime.strptime(due_date, "%d %b %Y")
+                except ValueError:
+                    self.error_frame = ErrorFrame(
+                        self, message="Invalid date format. Please enter in the format of '21 Feb 2022'"
+                    )
+                    return
 
         if collection.find_one({"task_id": task_id}):
 
@@ -495,7 +509,7 @@ class App(customtkinter.CTk):
             search_query["task_id"] = int(self.entry.get())
 
         else:
-            # If the input is not an int, 
+            # If the input is not an int,
             # check the db usernames for a match
             search_query["assigned_to"] = self.entry.get()
 
@@ -508,7 +522,7 @@ class App(customtkinter.CTk):
             self.textbox.delete(1.0, END)
             for task in task_cursor:
 
-                # Iterate through the cursor and 
+                # Iterate through the cursor and
                 # display the details of each task
                 self.textbox.insert(
                     "end", "\nTask ID: " + str(task["task_id"]) + "\n"
@@ -536,7 +550,7 @@ class App(customtkinter.CTk):
             self.textbox.delete(1.0, END)
             self.textbox.insert(
                 "end",
-                "\nNo Tasks Found.\nPlease note - usernames are case sensitive.\n",
+                "\nNo Tasks Found.\nPlease note - username searches are case sensitive.\n",
             )
 
     def generate_reports(self):
