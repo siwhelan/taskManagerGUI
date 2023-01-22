@@ -95,7 +95,7 @@ A short series of blogs documenting the build process and explaining some of the
 
 ## Screenshots 
 
-[main window of task manager app](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ycz16hqjvhakem9l25xg.JPG)
+https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ycz16hqjvhakem9l25xg.JPG
 
 ## Acknowledgements
 
