@@ -214,7 +214,7 @@ class Edit_task(customtkinter.CTk):
 
         self.entry_3 = customtkinter.CTkEntry(
             master=self.frame_3,
-            placeholder_text="User assigned to task",
+            placeholder_text="Re-assigned user",
             justify=tkinter.CENTER,
             width=300,
         )
@@ -274,14 +274,8 @@ class Edit_task(customtkinter.CTk):
         due_date = self.entry_6.get()
         completed = self.checkbox_2.get()
 
-        if due_date != '':
-            from dateutil import parser
-            # Retrieve the due_date from the MongoDB collection
-            due_date = collection.find_one({"task_id": task_id})["due_date"]
-            # convert the ISODate to datetime object using dateutil
-            due_date = parser.parse(due_date)
-            # convert the datetime object to the desired format
-            due_date = due_date.strftime('%d %b %Y')
+        if due_date != "":
+            due_date = datetime.strptime(due_date, "%d %b %Y")
 
         if collection.find_one({"task_id": task_id}):
 
@@ -315,7 +309,6 @@ class Edit_task(customtkinter.CTk):
                 collection.update_one(
                     {"task_id": task_id}, {"$set": {"due_date": due_date}}
                 )
-
             if completed == 1:
                 collection.update_one(
                     {"task_id": task_id}, {"$set": {"completed": "Yes"}}
@@ -420,7 +413,7 @@ class App(customtkinter.CTk):
 
         # create main entry and button
         self.entry = customtkinter.CTkEntry(
-            self, placeholder_text="Enter Data"
+            self, placeholder_text="Enter Search term - Username or Task ID"
         )
         self.entry.grid(
             row=3,
@@ -440,7 +433,7 @@ class App(customtkinter.CTk):
             text="Search",
             border_width=2,
             text_color=("gray10", "#DCE4EE"),
-            command=self.search,
+            command=lambda: [self.search(), clear_entry()],
         )
         self.main_button_1.grid(
             row=3, column=3, padx=(20, 20), pady=(20, 20), sticky="nsew"
@@ -502,7 +495,8 @@ class App(customtkinter.CTk):
             search_query["task_id"] = int(self.entry.get())
 
         else:
-            # If the input is not an int, string, check the db usernames for a match
+            # If the input is not an int, 
+            # check the db usernames for a match
             search_query["assigned_to"] = self.entry.get()
 
         # Perform the search using the search query
@@ -514,7 +508,8 @@ class App(customtkinter.CTk):
             self.textbox.delete(1.0, END)
             for task in task_cursor:
 
-                # Iterate through the cursor and display the details of each task
+                # Iterate through the cursor and 
+                # display the details of each task
                 self.textbox.insert(
                     "end", "\nTask ID: " + str(task["task_id"]) + "\n"
                 )
@@ -539,7 +534,10 @@ class App(customtkinter.CTk):
                 )
         else:
             self.textbox.delete(1.0, END)
-            self.textbox.insert("end", "\nNo Tasks Found\n")
+            self.textbox.insert(
+                "end",
+                "\nNo Tasks Found.\nPlease note - usernames are case sensitive.\n",
+            )
 
     def generate_reports(self):
 
@@ -574,9 +572,8 @@ class App(customtkinter.CTk):
         )
 
         # Find the tasks that are overdue and not completed
-        today = datetime.now().strftime("%d %b %Y")
         overdue_count = tasks_collection.count_documents(
-            {"due_date": {"$lt": today}, "completed": "No"}
+            {"due_date": {"$lt": datetime.now()}, "completed": "No"}
         )
 
         # Calculate the percentage of tasks that are incomplete and overdue

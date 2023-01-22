@@ -5,6 +5,30 @@ import hashlib
 import pymongo
 from Main_Window import App
 
+# Function to check if an admin account exists, and create one if it doesnt
+
+
+def create_admin():
+
+    # Create admin account
+    client = pymongo.MongoClient("mongodb://localhost:27017/")
+    db = client["task_manager"]
+    collection = db["login_info"]
+
+    # Check if the admin account already exists
+    if collection.find_one({"username": "admin"}) is None:
+
+        # Hash the password using SHA-256
+        hashed_password = hashlib.sha256("adm1n".encode("utf-8")).hexdigest()
+
+        # Create the admin account document
+        admin_account = {"username": "admin", "password": hashed_password}
+
+        # Insert the admin account document into the collection
+        collection.insert_one(admin_account)
+    else:
+        pass
+
 
 # Function to check if the username and password are correct
 
@@ -123,6 +147,7 @@ button = customtkinter.CTkButton(
 button.place(relx=0.5, rely=0.5, anchor=tkinter.CENTER)
 app.bind("<Return>", lambda event: button.invoke())
 
+create_admin()
 app.mainloop()
 # Create admin account
 client = pymongo.MongoClient("mongodb://localhost:27017/")
